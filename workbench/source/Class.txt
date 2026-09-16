@@ -1,0 +1,70 @@
+Class Overview
+What is Class?
+Class is the data field that bridges the gap between Salesforce and Netsuite.  Class tells our systems the attributes of all revenue for all opportunities and is used in all of our financial and accounting reports.
+
+Why is Class Important?
+In addition to serving as the bridge between SalesForce and NetSuite, Class also determines how sales reps are compensated for their successes. Class tells our system how to differentiate the type of revenue we’re receiving from our customers, ensures that sales reps are properly compensated, and provides for accurate revenue reporting to our leadership teams and investors.
+
+The 3 Main Classes
+New Business - Use this class for the first-time purchase of a Learning.com | Preparing K-12 Students with Future-Ready Digital Skills  subscription by an account designated as an RPM Prospect (cf. Lifecycle Stage “Opportunity”) Standalone PD (PD Workshops, Webinars and Custom Professional Services) purchased with or without a renewal will be classed as New Business: NRR (this classification is automated in SalesForce).
+Once the first order for that account is processed as New Business, any additional orders—including orders for different schools within the same parent account—must be processed as Upsell.
+Sales should:
+
+Confirm whether another New Business order has already been processed for the account.
+
+Set subsequent Opportunities and Quotes to Upsell.
+
+Update the Quote Type before changing product-line classifications, since Quote Type controls which classifications are available.
+
+Example: If one school within a district is processed as New Business, a later order for another school in that same district must be processed as Upsell.
+
+Renewal - Use this class for the purchase of a subscription to a Learning.com | Preparing K-12 Students with Future-Ready Digital Skills  product or service within the Renewal Time Period. The “Renewal Time Period” is the calendar year (Jan. 1 through Dec. 31) in which the subscription expires. Renewal value is based on annualized list price without discounting.
+
+Upsell - Use this class for the expansion of an existing subscription to a Learning.com | Preparing K-12 Students with Future-Ready Digital Skills  product line within an account designated as a Customer. The rule of thumb here is: use upsell for the net positive difference in ARR between a renewal Opportunity and its source renewal contract (i.e., the previous cycle’s closed-won ARR). Upsell does not apply to price uplift, i.e., an increase in price over the previous year resulting from removal of discounting, pro-ration, and/or increases in list price.
+
+Win Back - This occurs when a previously churned customer returns to Learning.com. For example, if a customer was previously covered by a state program that lost funding and they now choose to purchase directly, the new transaction should be classified as New business.  For a State Deal Winback example, please see:  Michigan Win Back Campaign - Sales Support
+
+Class Subcategories
+Within the 3 main classes, there are 6 different subcategories of Class:
+
+ARR: ARR means Annual Recurring Revenue. Use this class for items and services which can reasonably be expected to renew. This does not necessarily mean that the subscription period to which this tag is applied must be 12 months; a subscription of a shorter period which is expected to renew can be tagged as an ARR sale.
+
+Biz Dev: For orders handled by the VP of Business Development, e.g., product transacted under the purview of a state initiative (e.g., Palmetto Program in South Carolina, Mountain State Educational Services Cooperative (MSESC) in West Virginia).
+
+NRR NRR means Non-Recurring Revenue. Use this class for services which are not annually renewable. Specifically: PD Workshops, Webinars and Custom Professional Services. Also use NRR for products on Pilots with durations under 12 months.
+
+Upfront Yr 2&3: For multi-year orders which are paid up-front, the first 12 months will be classed as ARR. Any period greater than 12 months (unless part of an 18-for-12 promotion) and up to 36 months will be classed as Upfront Yr 2&3. (Does not apply to “start early” bonus period; in such cases, revenue class, whether New Business or Upsell, ARR will apply for the duration.)
+
+Upfront Yrs >3: For upfront multi-year orders for more than three years, any period greater than 36 months will be classed as Upfront Yrs >3.
+
+Working with Class
+Upsell on Renewal Opportunities
+Upsell content valued at less than $1,000 may be added alongside items classed as Renewal on the same Renewal Opportunity in SalesForce and tracked jointly through the sales pipeline. Upsell content on managed accounts valued at $1.000 or higher shall be tracked on its own Upsell Opportunity, separately from the account’s Renewal Opportunity. This allows the win probability of Upsell content to be gauged independently through the pipeline. If the Upsell content tracked on a separate Opportunity is won with the Renewal content (i.e., a single purchase order covers both Renewal and Upsell content), Sales Support shall add Upsell content to the Renewal Opportunity and process both portions together in a single transaction for a single invoice. Sales Support will then move the Upsell Opportunity to Closed-Won Upsell to retain the Upsell Opportunity for historical purposes. This special stage will ensure proper closure of the Upsell Opportunity without duplicating the value of the closed-won transaction. 
+
+See:  Upsell Process for Sales for more detailed information.
+
+Late Renewals
+For accounts which fail to renew in their renewal year, use the following guidelines when those accounts’ orders are received in the new year, after their previous year’s renewal Opportunities have been marked Closed Lost:
+
+So-called “late renewals” are to be classed as follows:
+
+Managed account with CSM: Customer renewed their ET/INQ order for 2019-20 in 2019, but did not renew another item due in 2019; then in 2020 they purchased that item. The “late renewal” content shall be classed as Upsell with the CSM and credit to the territory RPM.
+
+Managed account with CSM: Customer failed to renew in their Renewal Time Period (Jan. 1 through Dec. 31). Renewal Opportunity will be marked closed-lost at the end of the Renewal Time Period. If the customer returns to order the following year (win back), this purchase will be New Business with the RPM.
+
+Managed account with CSM which purchases building by building (e.g., NHA, East Orange, NJ) – a building failed to renew in 2019 but now in 2020 we received a PO for that building. This purchase will be classed as Upsell with the CSM and credit to the territory RPM.
+
+Accounts owned by RAMs: The customer failed to renew in their Renewal Time Period (Jan. 1 through Dec. 31). Renewal Opportunity will be marked closed-lost at the end of the Renewal Time Period. If the customer returns to order the following year (win back), this purchase will be New Business with the RAM.
+
+ 
+
+Special Considerations and Exceptions
+Standalone PD (Custom Webinar and Onsite PD) for subscriptions that are classed as Renewal will be classed as Upsell: NRR. (Exception: PD on subsequent years of progressive orders shall be classed as Renewal.)
+
+Multi-year breakouts: Since standard pricing on select Learning.com products (EasyTech, Keyboarding, Online Safety, Curriculum Publisher) allows up to 15 months at annual list price, multi-year pricing is triggered by any period over 15 months, in which case content will need to be split out between first 12 months and subsequent year classes. For example, an 18-month New Business subscription will have the first full year classed as New Business ARR, and the subsequent 6 months classed as New Business Upfront Yrs 2&3 with respective start and end dates.
+
+Pilot Orders: On pilot orders whose duration is less than 12 months, class the content as New Business : NRR, whether paid or unpaid. For Pilots that last a full year, class the content as New Business : ARR (except for standalone PD), whether paid or unpaid.
+
+18‑for‑12 Promotions: Typically reserved for prospects (i.e., New Business), these promotions provide an 18‑month subscription term for the price of a standard 12‑month annual subscription. Products other than standalone PD shall be classed as ARR across the entire 18‑month duration of the subscription term, without multi‑year breakouts, and without treating any portion of the term as “free.”
+
+If a customer pays their renewal 6 or more months early AND the payment comes in a different year than the start date of the renewed opportunity, then we will classify the ARR as Upfront Year 2 & 3 ARR instead of Renewal ARR (ex: if a customer decides to pay their August 2022 renewal in November 2021, that will be classified as Upfront Year 2 & 3 ARR).

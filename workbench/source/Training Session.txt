@@ -1,0 +1,165 @@
+CREATE TABLE IF NOT EXISTS content_delivery_usage.fact_training_session
+(
+	training_session_id VARCHAR(300) NOT NULL  ENCODE lzo
+	,name VARCHAR(240) NOT NULL  ENCODE lzo
+	,account_id VARCHAR(300) NOT NULL  ENCODE lzo
+	,sfdc_account_id VARCHAR(300) NOT NULL  ENCODE lzo
+	,owner_id VARCHAR(300) NOT NULL  ENCODE lzo
+	,pds_group VARCHAR(33) NOT NULL  ENCODE lzo
+	,cancel_reason VARCHAR(765) NOT NULL  ENCODE lzo
+	,closed_date DATE NOT NULL  ENCODE az64
+	,created_by_id VARCHAR(18) NOT NULL  ENCODE lzo
+	,created_date TIMESTAMP WITHOUT TIME ZONE NOT NULL  ENCODE az64
+	,curriculum_examples VARCHAR(4099) NOT NULL  ENCODE lzo
+	,end_date DATE NOT NULL  ENCODE az64
+	,implementation_google_classroom VARCHAR(765) NOT NULL  ENCODE lzo
+	,implementation_notes VARCHAR(65535) NOT NULL  ENCODE lzo
+	,implementation_statement VARCHAR(65535) NOT NULL  ENCODE lzo
+	,implementation_topics VARCHAR(4099) NOT NULL  ENCODE lzo
+	,implementation_type VARCHAR(765) NOT NULL  ENCODE lzo
+	,implementing_grades VARCHAR(4099) NOT NULL  ENCODE lzo
+	,is_closed BOOLEAN NOT NULL  ENCODE RAW
+	,last_modified_by_id VARCHAR(18) NOT NULL  ENCODE lzo
+	,last_modified_date TIMESTAMP WITHOUT TIME ZONE NOT NULL  ENCODE az64
+	,notes VARCHAR(65535) NOT NULL  ENCODE lzo
+	,primary_contact VARCHAR(363) NOT NULL  ENCODE lzo
+	,secondary_contact VARCHAR(363) NOT NULL  ENCODE lzo
+	,session_attendee_count DOUBLE PRECISION NOT NULL  ENCODE RAW
+	,session_grades_attending VARCHAR(4099) NOT NULL  ENCODE lzo
+	,session_location_address VARCHAR(65535) NOT NULL  ENCODE lzo
+	,session_notes VARCHAR(65535) NOT NULL  ENCODE lzo
+	,session_participation_method VARCHAR(765) NOT NULL  ENCODE lzo
+	,session_subtype VARCHAR(765) NOT NULL  ENCODE lzo
+	,session_type VARCHAR(765) NOT NULL  ENCODE lzo
+	,start_date TIMESTAMP WITHOUT TIME ZONE NOT NULL  ENCODE RAW
+	,status VARCHAR(765) NOT NULL  ENCODE lzo
+	,survey_action_items VARCHAR(765) NOT NULL  ENCODE lzo
+	,survey_administrator_attendance VARCHAR(765) NOT NULL  ENCODE lzo
+	,survey_attendee_challenges VARCHAR(765) NOT NULL  ENCODE lzo
+	,requestor_id VARCHAR(300) NOT NULL  ENCODE lzo
+	,survey_attendee_count DOUBLE PRECISION NOT NULL  ENCODE RAW
+	,survey_notable_discussions VARCHAR(65535) NOT NULL  ENCODE lzo
+	,survey_notes VARCHAR(65535) NOT NULL  ENCODE lzo
+	,survey_outcome_as_planned VARCHAR(765) NOT NULL  ENCODE lzo
+	,survey_outcome_issues VARCHAR(4099) NOT NULL  ENCODE lzo
+	,survey_recommendations VARCHAR(65535) NOT NULL  ENCODE lzo
+	,survey_teacher_engagement VARCHAR(765) NOT NULL  ENCODE lzo
+	,survey_teacher_sentiment VARCHAR(765) NOT NULL  ENCODE lzo
+	,loaddate TIMESTAMP WITHOUT TIME ZONE NOT NULL  ENCODE az64
+	,PRIMARY KEY (training_session_id)
+)
+DISTSTYLE KEY
+ DISTKEY (account_id)
+ SORTKEY (
+	start_date
+	)
+;
+
+COMMENT ON TABLE content_delivery_usage.fact_training_session IS 'Fact table for training sessions based on Salesforce Training Session object. Contains information about training sessions, including dates, locations, participants, and various attributes related to the training.';
+
+-- Column comments
+
+COMMENT ON COLUMN content_delivery_usage.fact_training_session.training_session_id IS 'Primary Key of FACT_TRAINING_SESSION. It`s Salesforce Training Session ID column';
+COMMENT ON COLUMN content_delivery_usage.fact_training_session."name" IS 'Training Session Name';
+COMMENT ON COLUMN content_delivery_usage.fact_training_session.account_id IS 'DIM_ACCOUNT(PK/FK)';
+COMMENT ON COLUMN content_delivery_usage.fact_training_session.sfdc_account_id IS 'Salesforce Account ID.';
+COMMENT ON COLUMN content_delivery_usage.fact_training_session.owner_id IS 'DIM_EMPLOYEE (PK/FK)';
+COMMENT ON COLUMN content_delivery_usage.fact_training_session.pds_group IS 'Professional Development Services Group: Professional Development Services or Service And Training or Assigned to an owner. If a new group ID is added in Owner Id attribute Training Session SFDC object it will be added as is and need to be manually mapped in the transformation';
+COMMENT ON COLUMN content_delivery_usage.fact_training_session.cancel_reason IS 'Cancellation Reason';
+COMMENT ON COLUMN content_delivery_usage.fact_training_session.closed_date IS 'Date Closed';
+COMMENT ON COLUMN content_delivery_usage.fact_training_session.created_by_id IS 'Created By user. The ID allows to join COMMON.DIM_EMPLOYEE, but no FK is created. Can be used for validation purposes';
+COMMENT ON COLUMN content_delivery_usage.fact_training_session.created_date IS 'Created Date in PST';
+COMMENT ON COLUMN content_delivery_usage.fact_training_session.curriculum_examples IS 'Curriculum Examples';
+COMMENT ON COLUMN content_delivery_usage.fact_training_session.end_date IS 'End Date';
+COMMENT ON COLUMN content_delivery_usage.fact_training_session.implementation_google_classroom IS 'Google Classroom';
+COMMENT ON COLUMN content_delivery_usage.fact_training_session.implementation_notes IS 'Implementation Notes';
+COMMENT ON COLUMN content_delivery_usage.fact_training_session.implementation_statement IS 'Implementation Statement';
+COMMENT ON COLUMN content_delivery_usage.fact_training_session.implementation_topics IS 'Topics';
+COMMENT ON COLUMN content_delivery_usage.fact_training_session.implementation_type IS 'Implementation Type';
+COMMENT ON COLUMN content_delivery_usage.fact_training_session.implementing_grades IS 'Implementing Grades';
+COMMENT ON COLUMN content_delivery_usage.fact_training_session.is_closed IS 'Closed';
+COMMENT ON COLUMN content_delivery_usage.fact_training_session.last_modified_by_id IS 'Last Modified By user. The ID allows to join COMMON.DIM_EMPLOYEE, but no FK is created. Can be used for validation purposes';
+COMMENT ON COLUMN content_delivery_usage.fact_training_session.last_modified_date IS 'The datetime the record was modified in PST';
+COMMENT ON COLUMN content_delivery_usage.fact_training_session.notes IS 'Notes from CSR';
+COMMENT ON COLUMN content_delivery_usage.fact_training_session.primary_contact IS 'Primary Contact Name';
+COMMENT ON COLUMN content_delivery_usage.fact_training_session.secondary_contact IS 'Secondary Contact Name';
+COMMENT ON COLUMN content_delivery_usage.fact_training_session.session_attendee_count IS 'Session Attendee Count';
+COMMENT ON COLUMN content_delivery_usage.fact_training_session.session_grades_attending IS 'Session Grades Attending';
+COMMENT ON COLUMN content_delivery_usage.fact_training_session.session_location_address IS 'Location Address';
+COMMENT ON COLUMN content_delivery_usage.fact_training_session.session_notes IS 'Session Notes from Trainer';
+COMMENT ON COLUMN content_delivery_usage.fact_training_session.session_participation_method IS 'Session Participation Method';
+COMMENT ON COLUMN content_delivery_usage.fact_training_session.session_subtype IS 'Subtype';
+COMMENT ON COLUMN content_delivery_usage.fact_training_session.session_type IS 'Type';
+COMMENT ON COLUMN content_delivery_usage.fact_training_session.start_date IS 'Start Date';
+COMMENT ON COLUMN content_delivery_usage.fact_training_session.status IS 'Status';
+COMMENT ON COLUMN content_delivery_usage.fact_training_session.survey_action_items IS 'Action Items';
+COMMENT ON COLUMN content_delivery_usage.fact_training_session.survey_administrator_attendance IS 'Administrator In Attendance';
+COMMENT ON COLUMN content_delivery_usage.fact_training_session.survey_attendee_challenges IS 'Attendee Challenges';
+COMMENT ON COLUMN content_delivery_usage.fact_training_session.requestor_id IS 'Tarining Session Requester ID - DIM_EMPLOYEE FK';
+COMMENT ON COLUMN content_delivery_usage.fact_training_session.survey_attendee_count IS 'Attendee Count Confirmation';
+COMMENT ON COLUMN content_delivery_usage.fact_training_session.survey_notable_discussions IS 'Notable Discussions';
+COMMENT ON COLUMN content_delivery_usage.fact_training_session.survey_notes IS 'Post Training Notes from Trainer';
+COMMENT ON COLUMN content_delivery_usage.fact_training_session.survey_outcome_as_planned IS 'Outcome As Planned';
+COMMENT ON COLUMN content_delivery_usage.fact_training_session.survey_outcome_issues IS 'Outcome Issues';
+COMMENT ON COLUMN content_delivery_usage.fact_training_session.survey_recommendations IS 'Next Training Recommendations';
+COMMENT ON COLUMN content_delivery_usage.fact_training_session.survey_teacher_engagement IS 'Teacher Engagement';
+COMMENT ON COLUMN content_delivery_usage.fact_training_session.survey_teacher_sentiment IS 'Teacher Sentiment';
+COMMENT ON COLUMN content_delivery_usage.fact_training_session.loaddate IS 'The datetime the record was loaded in PST';
+
+
+
+
+-- content_delivery_usage.fact_training_session foreign keys
+
+ALTER TABLE content_delivery_usage.fact_training_session ADD CONSTRAINT fact_training_session_account_id_fkey FOREIGN KEY (account_id) REFERENCES common.dim_account(account_id);
+ALTER TABLE content_delivery_usage.fact_training_session ADD CONSTRAINT fact_training_session_owner_id_fkey FOREIGN KEY (owner_id) REFERENCES common.dim_employee(employee_id);
+
+
+CREATE TABLE IF NOT EXISTS content_delivery_usage.dim_training_session_topic
+(
+	topic_id VARCHAR(300) NOT NULL  ENCODE RAW
+	,topic VARCHAR(200) NOT NULL  ENCODE lzo
+	,loaddate TIMESTAMP WITHOUT TIME ZONE NOT NULL  ENCODE az64
+	,PRIMARY KEY (topic_id)
+)
+DISTSTYLE ALL
+ SORTKEY (
+	topic_id
+	)
+;
+
+COMMENT ON TABLE content_delivery_usage.dim_training_session_topic IS 'Dimension table for unique training session topics. Each topic is assigned a unique topic_id (MD5 hash of topic name) and includes the topic text. Built from distinct topics in training sessions.';
+
+-- Column comments
+
+COMMENT ON COLUMN content_delivery_usage.dim_training_session_topic.topic_id IS 'Unique topic identifier (MD5 hash of topic name). Primary key.';
+COMMENT ON COLUMN content_delivery_usage.dim_training_session_topic.topic IS 'Individual topic extracted from training session implementation_topics.';
+COMMENT ON COLUMN content_delivery_usage.dim_training_session_topic.loaddate IS 'The datetime the record was loaded in PST';
+
+
+
+
+CREATE TABLE IF NOT EXISTS content_delivery_usage.dim_training_session_topic_session
+(
+	training_session_id VARCHAR(300) NOT NULL  ENCODE lzo
+	,topic_id VARCHAR(300) NOT NULL  ENCODE RAW
+	,loaddate TIMESTAMP WITHOUT TIME ZONE NOT NULL  ENCODE az64
+)
+DISTSTYLE ALL
+ SORTKEY (
+	topic_id
+	)
+;
+
+COMMENT ON TABLE content_delivery_usage.dim_training_session_topic_session IS 'Mapping table between training sessions and topics. Each record links a training session to a topic, with load timestamp. Used for analyzing topic coverage across sessions.';
+
+-- Column comments
+
+COMMENT ON COLUMN content_delivery_usage.dim_training_session_topic_session.training_session_id IS 'Foreign key to fact_training_session; unique identifier for the training session.';
+COMMENT ON COLUMN content_delivery_usage.dim_training_session_topic_session.topic_id IS 'Foreign key to dim_training_session_topic; unique topic identifier (MD5 hash of topic name).';
+COMMENT ON COLUMN content_delivery_usage.dim_training_session_topic_session.loaddate IS 'The datetime the record was loaded in PST';
+
+-- content_delivery_usage.dim_training_session_topic_session foreign keys
+
+ALTER TABLE content_delivery_usage.dim_training_session_topic_session ADD CONSTRAINT dim_training_session_topic_session_topic_id_fkey FOREIGN KEY (topic_id) REFERENCES content_delivery_usage.dim_training_session_topic(topic_id);
+ALTER TABLE content_delivery_usage.dim_training_session_topic_session ADD CONSTRAINT dim_training_session_topic_session_training_session_id_fkey FOREIGN KEY (training_session_id) REFERENCES content_delivery_usage.fact_training_session(training_session_id);

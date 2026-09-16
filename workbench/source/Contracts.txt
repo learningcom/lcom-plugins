@@ -1,0 +1,79 @@
+Contracts
+
+Contracts are originated in Salesforce as opportunities or HubSpot deals, integrated into NetSuite as orders and LCom Platform as license orders.
+
+They have owner, Start and End dates, account at any role of the hierarchy school or district, and may have up to 3 contacts.
+
+In practise, there are contracts with missing account, missing or incorrect start and end dates and no contacts.
+
+Most of the contracts are annual, monthly for some products with annualized revenue, and multi-years.
+
+Multi-years contracts can be paid up-front when first year is categorized as ARR and the rest of the amount as NRR or progressive with yearly payments as ARR
+
+Opportunity Won or Upsell Won Stage and not blank invoiced date defines and Active contract contributed in companies booking and ARR amounts
+Lost Stage means Lost Opportunity but concidered as Lost only on and after its Close Date.
+Not Won or Lost stages mean Active Renewal which can exist in such state forever.
+All opportunities have always populated Created and Close date and only Active contracts have not blank invoiced date
+
+It's expected all opportunities have renewals, in practise  however, this is not always the case.
+
+A child opportunity can be a renewal of more than one parent opportunities (mutli-parents).
+Parent and renewal opportunities may have different accounts, owners, products and contacts.
+
+Some opportunities are originated as HubSpot ECommerce deals and HubSpot is their master system. There is a special manual step to confirm 
+the ECommerce deal is paid and should be proceed further in the pipline.
+However ECommerce opportunities renewals are created in Salesforce, loaded back to HubSPot and can be modified in both systems
+Usually, it's relatively small deals.
+
+Most of the opportunities have just one product line item but some of them may have 2 or more product line items with the same product but different class: ARR or NRR or Biz Dev
+or different products and the same class or combination of both.
+
+The class at the opportunity line item level defines the type of deal: State Program Deal (Biz Dev) or District Deals (ARR). 
+Both, Biz Dev and ARR are Annual Recuring Revenue but from different types of business.
+State Program Deals are usually large and cover the usage of eligible accounts (public districts).
+
+An opportunity may have both, State Program and District deals and/or NRR for multi-years opportunities or Services like training or support.
+
+The class also defines New, Renewal or Upsell deal.
+
+Some opportunity lines may have "Upsell" class along with renewals. There is a complex manual process to separate Upsell from Renewal price increase 
+and it defines at the level of an opportunity based on starting ARR, starting and renewal number of licenses etc
+Overall,  reporting Upsell vs Price Increase at the level of an opportunity product line is possible but not representetive because the decision is done based on all oportunities lines and account previous history.
+
+Some opportunities are separate Upsell opportunities and their Closed Won stage is Closed Upsell Won.
+
+If there is a need to do a fix or adjustment to an Active Contract a negative or replacement opportunity is created.
+They have 'NEGATIVE OPP' or REPLACEMENT OPP' in the names, negative amounts and may or may not join to the adjusting opportunity as a renewal opportunity.
+They are in Closed Won stage, not integrated with NetSuite but may have an invoiced date even if the parent opportunity does not have invoiced date.
+
+Some opportunities may have negative amounts or renew the adjusting opportunities with the same as an original contract Start and End dates 
+in order of some adjustments without 'NEGATIVE OPP' or REPLACEMENT OPP' in the name.
+
+It's a normal practise to have backdated opportunities where Start Date is in a past relatively to the Invoiced Date.
+
+Opportunities line items (individual deals) inherit Opportunity  Stage, Start, End, Invoiced, Close dates, Owner but have its own class, unit price, list price,
+salesforce product, total amount (Biz Dev, ARR or NRR depending on class), quantity (number of students in License Orders) and discounts.
+
+Salesforce product is different from LCom product SKU and there is many-to-many relations between them.
+The product can be the same or different in a renewal opportunity but belong to the same product type when there is a new product is designed
+replacing an aged old one. 
+An individual product of the same type can be created for a specific state customer, district or commercial customer if needed.
+
+Letter of Intent opportunities are special type of opportunities with a small quantity works like a commitment to purchase more licenses later.
+
+Number of Students, Number of Schools and list of schools are manually maintained opportunity attributes which can be considered as a true numbers
+of licenses provisioned and schools in license orders. They can be empty and not consistently maintained.
+
+Opportunity level discounts are multi-level discounts. No discount is applied for Subscription terms shorter than 24 months, or 
+Contract types other than Paid-up-front or Progressive.
+
+There are 2 types of the opportunity line item discounts:
+
+1. Additinal discounts are set manualy by the opportunity owner in a form of % or $$$
+2. Total discounts which accumulate additional discounts plus some other rules.
+
+Since there are many contracts are payed later in the school year, there is a process to extend
+current contracts indefinetly ignoring STart and End dates. The uninforced contracts are cleaned up 
+manually when the renewal contracts won or lost. Practically, it means a lot of backdated transactions.
+
+

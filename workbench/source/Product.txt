@@ -1,0 +1,35 @@
+Lcom Product is a learning items (lessons) which are sold and licensed as sets or packages. 
+Lcom Platform provides lessons for teachers and districts coordinators based on licensed SKU in a form of sequencies and default pathway.
+They can create their own custom sequences.
+Salesforce products (selling) and LCom Platform SKU (licensing) has many-to-many relations.
+There are many-to-many relations between lessons, SKU and sequences and no direct relations between Salesforce Products and lessons.
+
+Salesforce products and SKU can be created for a specific state or Lcom Customer.
+
+There are several commonly used product names which are specific SKUs or sequences:
+AI Literacy
+Digital Literacy Assessments
+Common Sense Education
+Digital Readiness
+Digital Safety Foundation
+EasyCode
+EasyTech
+Keyboarding
+Online Safety & Digital Citizenship
+Tech Quest
+
+
+Product Categories were created in the data warehouse to report usage on these commonly used products names. They do not exist in LCom Platform.
+
+Business Users may use the exact name above, abbrevations by first characters like Digital Literacy Assessments -> DLA or EasyTech -> ET or just something similar
+
+There is no way to report revenue by these product categories, only usage.
+
+In Salesforce Product, most close aggregation level is Sub Family which is just EasyTech plus few other products in subfamilies not related to LCom Platform but rather products aquired from other companies.
+There is no way to report usage by Salesforce products, only revenue.
+
+Salesforce product is used in Salesforce Opporttunity Line Item (Deal)
+
+SKU is used in License Orders
+
+

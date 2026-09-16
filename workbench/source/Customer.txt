@@ -1,0 +1,4 @@
+Customer is a Salesforce Ultimate Parent account with non zero ARR. 
+Individual acounts like schools or even district role accounts, are not counted as customers even if there is a non zero ARR Active Contract for this account.
+Public Districts which use LCom products under State Program Deals contracts are not counted as customers if they do not have individual non-zero ARR Active Contracts.
+They are licenses holders and can not be churned.

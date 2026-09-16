@@ -1,0 +1,25 @@
+Usage
+
+Usage is collected as individual launches of learning items (lessons) 
+or completions like succesfull answering question or resolving other tasks related to a lesson 
+by an user (student, teacher or district coordinator) 
+associated with a school or district and grade.
+
+A user has individual ID across LCom Platform which may be or may be not keep if a student moved from one school to an other 
+and continue using LCom Platform.
+
+Learning items may be associated with more than one LCom SKU or a specific sequence used to present lessons to users in the platform.
+
+There is no way to link a specific launch or completion with Salesforce product from an active contract, LCom SKU from a license school or district has.
+
+It's possible to have more than 1 launch or completion of the same lesson by the same user.
+
+What exactly is the entity? I suggest defining Usage as an interaction by a User with a Learning Item in LCom Platform, represented by events such as Launch and Completion. In other words, Launch and Completion are types of Usage events rather than separate business entities. Is that correct? -> Yes with addition of the place. (There are different ways of launching the content from different aggrgations insode of the platform like sequences or default paths, but it's beyond our reporting as well as how users log in into the platform using Canvas or something else. Not important for now.
+
+School association: For reporting, does every usage event effectively have a school_id, including district-level users through the special _cloud / _Cloud schools, or can a usage event genuinely belong only to a district with no school? As far as I know sometimes Org school ID is empty and Org district ID is always known, than such event is linked to a district org not school. Not sure why it happens, because of teh way how users log in or some issues/errors on the platform side
+
+Grade: Your file says usage is associated with school/district and grade. Is grade actually used in your current business reporting and therefore worth keeping in the ontology, or should I leave it out of the core relationships? Yes, grade is used in the reporting. It can be Unknown e.g. missing data for whatever reason but the grade present in the data
+
+Topic: Is Topic an attribute/classification of the Learning Item (so Usage → Learning Item → Topic), or is Topic directly recorded with each usage event? And can one Learning Item belong to more than one Topic? Topic is many-to-one with a learning item and we do reporting on Topics, not something specific to the event itself. E.g. all events for the same learning item are always in the same topic 
+
+

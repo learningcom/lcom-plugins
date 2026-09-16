@@ -1,0 +1,9 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "lcom-business-context",
+  "version": "1.0.0",
+  "description": "Learning.com business knowledge for Reporting & Analytics.",
+  "author": {
+    "name": "Learning.com Reporting & Analytics"
+  }
+}

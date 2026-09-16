@@ -1,0 +1,7 @@
+CSM (Customer Success Manager)
+
+A Customer Success Manager (CSM) is a person who helps LCom Customers get the most value out of the LCom Platform.
+
+Account Owner: Represents the primary rep responsible for the overall customer account relationship.
+
+Opportunity Owner: Tracks the specific sales rep or business developer who owns a particular deal or pipeline stage.

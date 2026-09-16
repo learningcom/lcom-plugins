@@ -1,0 +1,1 @@
+A customer considered churned when its ARR is 0.

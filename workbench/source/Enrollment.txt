@@ -1,0 +1,13 @@
+Enrollment
+
+Enrollment data are available from LCom Platform populated by teachers and district cordinators and from
+NCES (https://nces.ed.gov/, a federal agency within the Department of Education that compiles and standardizes data from all public schools, 
+private schools, and universities in the United States). NCES data are available in Salesforce.
+
+Both sources are not 100% accurate due to different reasons.
+
+LCom Platform Enrollment may include students and schools not using LCom Platform at all. Students leaving a school or districts are not excluded from the roster.
+
+NCES data can be outdated, summary of school enrollment are not always equal district enrollment.
+
+ 

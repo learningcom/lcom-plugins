@@ -1,0 +1,47 @@
+Licenses
+
+License orders are issued per LCom organization in a District role in LCom Platform hierarchy.
+
+Licenses are provisioned per user (student) in most of the products but sometimes,  they are provioned per buiilding (school)
+and converted to number of users according to an unknown rule, probably based on non-real enrollment numbers. 
+
+Licenses are inforced per license order (district) but the number of students (licenses provisioning) who can access LCom Platform is not restricted.
+
+The ambiguity most likely related to a hard time estimate number of students who will use LCom Platform.
+
+Licenses provisioning means how many students we payed to serve.
+
+License orders have an owner (district role account), STart and End dates, flag to indicate if start and end dates are inforced, 
+number of students (licenses provisioning per user), number of schools, associated list of the school, but NOT number of students (licenses provisioning) 
+associated with a specific school (accounts in school level).
+
+Therefor, licenses provisioning  are not , in fact, true licenses, but rather estimation number of students who can potentially use LCom Product.
+
+There is no way to report number of students (licenses provisioning) or utilization acuratelly per school based on License data.
+
+The process described above may result in more than 100% license utilization numbers in some districts when there are less licenses provisioning than students using LCom Platform.
+
+Licenses are provisioned per LCom Product SKU. This SKU is not used in collected Usage data at all and there are complex many-to-many relationships 
+with Salesforce products, so, it's technically possible, but no practical purpose to report licenses orders or licenses provisioning per SKU.
+
+Due to late closing contracts a number of active licenses is changed in the past e.g. backadted license orders.
+In order to provide early access to accounts with late payment renewals, there is a manual process to uninforce license orders
+according to unenforced opportunities/contracts.
+
+
+License Provisioning Method : 
+
+🔹Early Access State Initiative then Max Students:  If a district is State Initiative then the number of Licenses is calculated according to the rule below. Otherwise, just a maximum number of students   per licensed SKU is reported. In both cases, if a license order is expired, but marked as Not Enforce Date Restrictions, it's still counted as active.
+🔹State Initiative then Max Students: The same as above but expired license orders are never taken into account. .
+🔹Early Access Max Students: Always maximum number of students per licensed SKU is reported. State Initiative is ignored. If a license order is expired, but marked as Not Enforce Date Restrictions, it's still counted as active.
+🔹Max Students:  Always maximum number of students per licensed SKU is reported. State Initiative is ignored. Not Enforce Date Restrictions orders are not taken into account. This is the most accurate number of licenses provisioning.
+🔹Early Access State Initiative Students: If a district is State Initiative then the number of Licenses is calculated according to the rule below  or 0. If a license order is expired, but marked as Not Enforce Date Restrictions, it's still counted as active.
+🔹State Initiative Students: If a district is State Initiative then the number of Licenses is calculated according to the rule below or 0. Expired license orders are never taken into account. 
+🔹Opportunity Closed Won Students: Max number of students from Closed Won, invoiced opportunities, active in the selected month
+          
+  The following states follow special license provisioning rules (ET : EasyTech SKU): 
+     
+🔹FL and MS: ET licenses (K–12) 
+🔹GA , MI, MS, NC, SC, WV: ET licenses (K–8) 
+
+

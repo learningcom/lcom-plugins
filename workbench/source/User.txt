@@ -1,0 +1,6 @@
+User
+
+User is a student, teacher or district coordinator associated with a school or district. 
+Their PII data, like names or emails available in LCom Platform but not used currently for reporting.
+
+Platform usage and enrollment data are currently associated with individual users IDs for high level reporting.

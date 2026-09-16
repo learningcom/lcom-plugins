@@ -1,0 +1,15 @@
+{
+  "name": "learning-com-plugins",
+  "interface": {
+    "displayName": "Learning.com Plugins"
+  },
+  "plugins": [
+    {
+      "name": "lcom-business-context",
+      "source": {
+        "source": "local",
+        "path": "./plugins/lcom-business-context"
+      }
+    }
+  ]
+}

@@ -1,0 +1,4 @@
+Contact
+
+Contact represents an individual persons asociated with an account and/or opportunity.
+They are originated directly in Salesforce or in HubSpot and integrated with SAlesforce.

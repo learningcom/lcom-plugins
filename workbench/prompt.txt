@@ -1,0 +1,283 @@
+This file is the canonical knowledge source for AI reasoning and will also be reviewed and maintained by humans. 
+Use these sections when supported by the source: 
+# <Business Term> 
+* Definition 
+* Aliases 
+* Relationships 
+* Business Rules 
+* Ambiguities 
+* Related Terms 
+* Ontology Diagram For relationships, use the consistent format: relationship_type → target_concept followed by a business explanation when needed. 
+
+Preserve all important stable business knowledge from the source, including complexity, qualifications, uncertainty, and conflicting perspectives. 
+Do not invent missing relationships or business rules. 
+Do not include database implementation details or dynamic instance-level facts. 
+Use Markdown formatting consistently so the document is easy for both humans and LLMs to interpret. 
+The detailed Markdown is the source of truth. 
+Do not summarize it for brevity.
+
+
+
+Using the attached detailed business-knowledge Markdown file, create a concise business glossary definition for a human reader. 
+
+The output should: 
+be suitable for a Confluence business glossary page; 
+explain the term in plain business language; 
+preserve the main business meaning and the most important distinction or complication; 
+avoid technical implementation details; 
+avoid exhaustive rules, edge cases, history, and system-specific details unless they are essential to understanding the term; 
+be readable in under 1 minute; 
+use no more than 2 short paragraphs plus, if needed, 3–5 brief key points; 
+Do not introduce information that is not supported by the source.
+Do not mirror the structure of the detailed knowledge file.
+Summarize it for a business audience. 
+Return only the final glossary text in markdown format for edit and download.
+
+
+
+Using the attached ARR Framework as the authoritative source, create a detailed Markdown knowledge file for **Annual Recurring Revenue (ARR)**.
+
+This file is the canonical knowledge source for AI reasoning and will also be reviewed and maintained by humans.
+
+ARR is not a simple entity. Treat it as a **business metric framework** with multiple views, timing rules, movement logic, and reporting interpretation.
+
+Use these sections when supported by the source:
+
+# Annual Recurring Revenue (ARR)
+
+## Definition
+
+Explain what ARR means in Learning.com business reporting.
+
+## Distinction from Related Metrics
+
+Explain how ARR differs from related concepts such as:
+
+* Booking
+* Opportunity / Deal ARR
+* NRR
+* Revenue
+
+Only include distinctions supported by the source.
+
+## ARR Views
+
+Describe each supported ARR view separately:
+
+* True ARR
+* Preliminary ARR
+* Backdated ARR
+
+For each view, capture its business purpose, timing behavior, activation logic, historical treatment, and any grace-period rules.
+
+## Source Business Objects
+
+Describe the business entities ARR is derived from, such as Contracts / Opportunities and Opportunity Line Items, without documenting database implementation.
+
+## Eligibility Rules
+
+Describe which contracts or opportunity records can participate in ARR and which are excluded.
+
+## Timing Rules
+
+Preserve all important rules related to:
+
+* contract start and end dates;
+* invoice and close dates;
+* adjusted start dates;
+* parent and renewal timing;
+* overlaps;
+* gaps;
+* missing renewal dates;
+* activation and deactivation.
+
+## Renewal and Continuity Rules
+
+Explain how ARR behaves across parent contracts and renewals, including:
+
+* continuous renewals;
+* gaps;
+* overlapping contracts;
+* renewals replacing multiple parent contracts;
+* contracts without renewals.
+
+## ARR Movements
+
+Describe the business meaning of:
+
+* ARR-Starting
+* ARR-MonthlyAdded
+* ARR-MonthlyReduced
+* ARR balance
+
+## Movement Reasons / Buckets
+
+Describe supported ARR change reasons, including when applicable:
+
+* Starting
+* New Business
+* Renewal
+* Upsell
+* Price Increase
+* Downsell
+* Cancellation
+* Expiration
+
+Explain what each represents and how it affects ARR.
+
+## Business Rules
+
+Preserve important stable business rules that affect ARR interpretation.
+
+## Reporting and Interpretation Rules
+
+Explain how ARR should be interpreted in reporting, including:
+
+* monthly reporting behavior;
+* how to explain why ARR changed;
+* differences between balance and movement records;
+* known aggregation or granularity limitations.
+
+## Ambiguities and Limitations
+
+Preserve known data-quality issues, operational inconsistencies, unreliable classifications, and situations where ARR interpretation is limited or approximate.
+
+Do not resolve ambiguity unless the source resolves it.
+
+## Relationships
+
+Use the consistent format:
+
+`relationship_type → target_concept`
+
+followed by a business explanation when needed.
+
+Include only meaningful static relationships supported by the source, for example relationships to:
+
+* Contract / Opportunity
+* Opportunity Line Item / Deal
+* Account / Customer
+* Product
+* Reporting Month
+* Renewal
+* ARR View
+* ARR Movement
+
+Do not invent relationships simply to make the model complete.
+
+## Related Terms
+
+List and briefly explain closely related business concepts that help interpret ARR.
+
+## Metric / Ontology Diagram
+
+Create one or more diagrams showing the major conceptual relationships in the ARR framework.
+
+The diagram should focus on business meaning, for example:
+
+Contract / Opportunity
+→ Opportunity Line Item
+→ ARR View
+→ ARR Movement
+→ ARR Balance
+
+and the relationship between parent contracts, renewals, timing, and movement reasons.
+
+Do not include database models, table names, or implementation pipeline steps in the diagram.
+
+---
+
+Preserve all important stable business knowledge from the source, including complexity, qualifications, uncertainty, timing behavior, and conflicting or imperfect business processes.
+
+Do not invent missing rules or relationships.
+
+Do not include dbt model names, table names, SQL, implementation pipeline details, or other database-specific mechanics unless they are essential to explain the business meaning of ARR.
+
+If the source mixes business rules with technical implementation details, translate the business meaning into the knowledge file and omit the implementation detail.
+
+Use Markdown formatting consistently so the document is easy for both humans and LLMs to interpret.
+
+The detailed Markdown is the source of truth.
+
+Do not summarize it for brevity.
+
+
+
+
+
+
+
+
+
+
+
+
+This file is the canonical knowledge source for AI reasoning and will also be reviewed and maintained by humans.
+
+Use these sections when supported by the source:
+
+# Case
+
+* Definition
+* Aliases
+* Relationships
+* Business Rules
+* Ambiguities
+* Related Terms
+* Ontology Diagram
+
+For relationships, use the consistent format:
+
+`relationship_type → target_concept`
+
+followed by a business explanation when needed.
+
+Preserve all important stable business knowledge from the source, including complexity, qualifications, uncertainty, and conflicting perspectives.
+
+Do not invent missing relationships or business rules.
+
+Do not include database implementation details or dynamic instance-level facts.
+
+Because Case is a standard Salesforce object, standard Salesforce meaning may be used only for the generic definition of a Case. Do not assume Learning.com-specific meanings for fields or classifications that are not explained by the source.
+
+Use Markdown formatting consistently so the document is easy for both humans and LLMs to interpret.
+
+The detailed Markdown is the source of truth.
+
+Do not summarize it for brevity.
+
+
+
+This file is the canonical knowledge source for AI reasoning and will also be reviewed and maintained by humans.
+
+Use these sections when supported by the source:
+
+# Training Session
+
+* Definition
+* Aliases
+* Relationships
+* Business Rules
+* Ambiguities
+* Related Terms
+* Ontology Diagram
+
+For relationships, use the consistent format:
+
+`relationship_type → target_concept`
+
+followed by a business explanation when needed.
+
+Preserve all important stable business knowledge from the source, including complexity, qualifications, uncertainty, and conflicting perspectives.
+
+Do not invent missing relationships or business rules.
+
+Do not include database implementation details or dynamic instance-level facts.
+
+Training Session is a custom Salesforce object. Use only the attached source to define its Learning.com business meaning; do not infer additional Salesforce behavior beyond what the source supports.
+
+Use Markdown formatting consistently so the document is easy for both humans and LLMs to interpret.
+
+The detailed Markdown is the source of truth.
+
+Do not summarize it for brevity.

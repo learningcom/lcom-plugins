@@ -1,0 +1,66 @@
+CREATE TABLE IF NOT EXISTS support.fact_case
+(
+	case_id VARCHAR(300) NOT NULL  ENCODE lzo
+	,account_id VARCHAR(300) NOT NULL  ENCODE lzo
+	,sfdc_account_id VARCHAR(300) NOT NULL  ENCODE lzo
+	,case_number VARCHAR(90) NOT NULL  ENCODE lzo
+	,case_owner_email VARCHAR(400) NOT NULL  ENCODE lzo
+	,closed_date TIMESTAMP WITHOUT TIME ZONE NOT NULL  ENCODE az64
+	,contact_id VARCHAR(300) NOT NULL  ENCODE lzo
+	,created_date TIMESTAMP WITHOUT TIME ZONE NOT NULL  ENCODE RAW
+	,description VARCHAR(65535) NOT NULL  ENCODE lzo
+	,is_closed BOOLEAN NOT NULL  ENCODE RAW
+	,is_escalated BOOLEAN NOT NULL  ENCODE RAW
+	,last_modified_date TIMESTAMP WITHOUT TIME ZONE NOT NULL  ENCODE az64
+	,origin VARCHAR(1000) NOT NULL  ENCODE lzo
+	,owner_id VARCHAR(300) NOT NULL  ENCODE lzo
+	,platform_name VARCHAR(300) NOT NULL  ENCODE lzo
+	,case_priority VARCHAR(1000) NOT NULL  ENCODE lzo
+	,support_type VARCHAR(240) NOT NULL  ENCODE lzo
+	,solution VARCHAR(5000) NOT NULL  ENCODE lzo
+	,status VARCHAR(100) NOT NULL  ENCODE lzo
+	,subject VARCHAR(1000) NOT NULL  ENCODE lzo
+	,case_type VARCHAR(100) NOT NULL  ENCODE lzo
+	,loaddate TIMESTAMP WITHOUT TIME ZONE NOT NULL  ENCODE az64
+	,PRIMARY KEY (case_id)
+)
+DISTSTYLE KEY
+ DISTKEY (account_id)
+ SORTKEY (
+	created_date
+	)
+;
+ALTER TABLE support.fact_case owner to svcfivetran;
+COMMENT ON TABLE support.fact_case IS 'Fact Case (Salesforce Case table)';
+
+-- Column comments
+
+COMMENT ON COLUMN support.fact_case.case_id IS 'Case ID';
+COMMENT ON COLUMN support.fact_case.account_id IS 'Account ID';
+COMMENT ON COLUMN support.fact_case.sfdc_account_id IS 'SFDC Account ID';
+COMMENT ON COLUMN support.fact_case.case_number IS 'Case Number';
+COMMENT ON COLUMN support.fact_case.case_owner_email IS 'Case Owner Email';
+COMMENT ON COLUMN support.fact_case.closed_date IS 'Date/Time Closed';
+COMMENT ON COLUMN support.fact_case.contact_id IS 'Contact ID';
+COMMENT ON COLUMN support.fact_case.created_date IS 'Created Date in PST timezone';
+COMMENT ON COLUMN support.fact_case.description IS 'Case Description';
+COMMENT ON COLUMN support.fact_case.is_closed IS 'Is Closed';
+COMMENT ON COLUMN support.fact_case.is_escalated IS 'Is Escalated';
+COMMENT ON COLUMN support.fact_case.last_modified_date IS 'Last Modified Date  in PST timezone';
+COMMENT ON COLUMN support.fact_case.origin IS 'Case Origin';
+COMMENT ON COLUMN support.fact_case.owner_id IS 'Owner ID, DIM_EMPLOYEE FK';
+COMMENT ON COLUMN support.fact_case.platform_name IS 'Platform Name';
+COMMENT ON COLUMN support.fact_case.case_priority IS 'Case Priority';
+COMMENT ON COLUMN support.fact_case.support_type IS 'Support Type';
+COMMENT ON COLUMN support.fact_case.solution IS 'Solution';
+COMMENT ON COLUMN support.fact_case.status IS 'Status';
+COMMENT ON COLUMN support.fact_case.subject IS 'Case Subject';
+COMMENT ON COLUMN support.fact_case.case_type IS 'Case Type';
+COMMENT ON COLUMN support.fact_case.loaddate IS 'The datetime the record was loaded in PST';
+
+
+-- support.fact_case foreign keys
+
+ALTER TABLE support.fact_case ADD CONSTRAINT fact_case_account_id_fkey FOREIGN KEY (account_id) REFERENCES common.dim_account(account_id);
+ALTER TABLE support.fact_case ADD CONSTRAINT fact_case_contact_id_fkey FOREIGN KEY (contact_id) REFERENCES common.dim_contact(contact_id);
+ALTER TABLE support.fact_case ADD CONSTRAINT fact_case_owner_id_fkey FOREIGN KEY (owner_id) REFERENCES common.dim_employee(employee_id);
