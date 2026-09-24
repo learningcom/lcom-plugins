@@ -1,0 +1,35 @@
+version: 2
+
+sources:
+  - name: common
+    database: dw
+    schema: common
+    tables:
+      - name: dim_account
+      - name: dim_month
+      - name: dim_calendar 
+
+  - name: reporting
+    database: dw
+    schema: reporting
+    tables:
+      - name: dim_account_metrics
+
+  - name: revenue
+    database: dw
+    schema: revenue
+    tables:
+      - name: vw_fact_arr
+
+  - name: content_delivery_usage
+    database: dw
+    schema: content_delivery_usage
+    tables:
+      - name: fact_students_completions_monthly_snapshots
+      - name: fact_students_usage_monthly_snapshots
+
+  - name: licensing
+    database: dw
+    schema: licensing
+    tables:
+      - name: vw_fact_license_order

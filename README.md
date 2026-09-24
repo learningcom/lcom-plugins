@@ -2,7 +2,7 @@
 
 This repository is the working home for Learning.com context used by ChatGPT.
 
-Its current primary deliverable is the **`lcom-business-context` Skill**, which provides curated business knowledge such as ontology definitions, glossary content, and business rules. The repository is intentionally structured so that additional **Skills**, **Plugins**, and **MCP servers** can be added later.
+Its current primary deliverable is the **`lcom-business-context` Skill**, which provides curated business knowledge such as ontology definitions, glossary content, and business rules. The repository is intentionally structured so that additional **Skills**, **Plugins**, and/or  **MCP servers** can be added later.
 
 ## Repository purpose
 

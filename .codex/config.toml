@@ -1,0 +1,9 @@
+[mcp_servers.lcom_metrics]
+command = 'C:\Users\KDrogaieva\OneDrive - Learning.com\Development\lcom-plugins\.venv\Scripts\python.exe'
+args = ['C:\Users\KDrogaieva\OneDrive - Learning.com\Development\lcom-plugins\workbench\metricflow_mcp\metricflow_mcp.py']
+cwd = 'C:\Users\KDrogaieva\OneDrive - Learning.com\Development\lcom-plugins\workbench\metricflow_mcp'
+
+enabled = true
+required = true
+startup_timeout_sec = 60
+tool_timeout_sec = 120

@@ -1,0 +1,66 @@
+version: 2
+
+models:
+  - name: vws_completions_account
+    description: Completions
+    config:
+      tags:
+        - semantic
+
+    semantic_model:
+      enabled: true
+      name: completions
+
+    primary_entity: completions
+    agg_time_dimension: mon_lastday
+
+
+    columns:
+
+      - name: account_id
+        entity:
+          name: account
+          type: foreign
+
+      - name: mon_lastday
+        granularity: month
+        dimension:
+          type: time
+    
+
+    metrics:
+      - name: users_with_completions
+        label: Users with Completions
+        type: simple
+        agg: sum
+        expr: users_with_completions
+        non_additive_dimension:
+          name: mon_lastday
+          window_agg: max        
+
+      - name: completions
+        label: Completions
+        type: simple
+        agg: sum
+        expr: completions
+        non_additive_dimension:
+          name: mon_lastday
+          window_agg: max        
+
+      - name: users_with_completions_month
+        label: Users with Completions Month
+        type: simple
+        agg: sum
+        expr: users_with_completions_month
+        non_additive_dimension:
+          name: mon_lastday
+          window_agg: max        
+
+      - name: completions_month
+        label: Completions Month
+        type: simple
+        agg: sum
+        expr: completions_month        
+        non_additive_dimension:
+          name: mon_lastday
+          window_agg: max        

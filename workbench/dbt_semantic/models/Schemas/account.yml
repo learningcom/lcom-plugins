@@ -1,0 +1,40 @@
+version: 2
+
+models:
+  - name: vws_account
+    description: Account
+    config:
+      tags:
+        - semantic
+ 
+    semantic_model:
+      enabled: true
+      name: account
+
+
+    columns:
+
+      - name: account_id
+        entity:
+          name: account
+          type: primary
+
+      - name: state_code
+        dimension:
+          type: categorical
+
+      - name: country
+        dimension:
+          type: categorical
+
+      - name: customer_name
+        dimension:
+          type: categorical  
+
+      - name: district_name
+        dimension:
+          type: categorical                   
+
+      - name: name
+        dimension:
+          type: categorical           

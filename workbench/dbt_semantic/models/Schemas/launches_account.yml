@@ -1,0 +1,66 @@
+version: 2
+
+models:
+  - name: vws_launches_account
+    description: Launches
+    config:
+      tags:
+        - semantic
+
+    semantic_model:
+      enabled: true
+      name: launches
+
+    primary_entity: launches
+    agg_time_dimension: mon_lastday
+
+
+    columns:
+
+      - name: account_id
+        entity:
+          name: account
+          type: foreign
+
+      - name: mon_lastday
+        granularity: month
+        dimension:
+          type: time
+     
+
+    metrics:
+      - name: active_users
+        label: Active Users
+        type: simple
+        agg: sum
+        expr: active_users
+        non_additive_dimension:
+          name: mon_lastday
+          window_agg: max        
+
+      - name: launches
+        label: Launches
+        type: simple
+        agg: sum
+        expr: launches
+        non_additive_dimension:
+          name: mon_lastday
+          window_agg: max        
+
+      - name: active_users_month
+        label: Active Users Month
+        type: simple
+        agg: sum
+        expr: active_users_month
+        non_additive_dimension:
+          name: mon_lastday
+          window_agg: max        
+
+      - name: launches_month
+        label: Launches Month
+        type: simple
+        agg: sum
+        expr: launches_month     
+        non_additive_dimension:
+          name: mon_lastday
+          window_agg: max           

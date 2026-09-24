@@ -1,0 +1,40 @@
+version: 2
+
+models:
+  - name: vws_licenses_account
+    description: Licenses
+    config:
+      tags:
+        - semantic
+
+    semantic_model:
+      enabled: true
+      name: licenses
+
+    primary_entity: licenses
+    agg_time_dimension: mon_lastday
+
+
+    columns:
+
+      - name: account_id
+        entity:
+          name: account
+          type: foreign
+
+      - name: mon_lastday
+        granularity: month
+        dimension:
+          type: time
+        
+
+    metrics:
+      - name: licenses
+        label: Licenses
+        type: simple
+        agg: sum
+        expr: studentcount
+        non_additive_dimension:
+          name: mon_lastday
+          window_agg: max        
+ 

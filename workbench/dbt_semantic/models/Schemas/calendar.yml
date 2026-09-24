@@ -1,0 +1,40 @@
+version: 2
+
+models:
+  - name: vws_calendar
+
+    description: >
+      Calendar dimension containing calendar, fiscal year, and school year
+      attributes. One row per day. No need in the project. dbt 1.12.5 requires at least one entity with day granularity
+
+    config:
+      tags:
+        - semantic
+
+    semantic_model:
+      enabled: true
+      name: calendar
+
+    time_spine:
+      standard_granularity_column: cal_date
+
+     
+
+    columns:
+
+      
+
+
+
+      - name: cal_date
+        description: Calendar date.
+        entity:
+          name: calendar
+          type: primary
+        granularity: day
+        dimension:
+          type: time
+          name: cal_date
+          label: day
+
+

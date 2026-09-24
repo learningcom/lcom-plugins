@@ -1,0 +1,70 @@
+
+version: 2
+
+models:
+  - name: vws_arr_account
+    description: ARR
+    config:
+      tags:
+        - semantic
+
+    semantic_model:
+      enabled: true
+      name: arr
+
+    primary_entity: arr
+    agg_time_dimension: mon_lastday
+
+    columns:
+
+      - name: account_id
+        entity:
+          name: account
+          type: foreign
+
+      
+
+      - name: mon_lastday
+        granularity: month
+        dimension:
+          type: time
+
+
+
+    metrics:
+      - name: arr
+        label: ARR
+        type: simple
+        agg: sum
+        expr: preliminary_arr
+        join_to_timespine: true
+        non_additive_dimension:
+          name: mon_lastday
+          window_agg: max
+
+      - name: preliminary_arr
+        label: Preliminary ARR
+        type: simple
+        agg: sum
+        expr: preliminary_arr
+        non_additive_dimension:
+          name: mon_lastday
+          window_agg: max
+
+      - name: backdated_arr
+        label: Backdated ARR
+        type: simple
+        agg: sum
+        expr: backdated_arr
+        non_additive_dimension:
+          name: mon_lastday
+          window_agg: max
+
+      - name: true_arr
+        label: True ARR
+        type: simple
+        agg: sum
+        expr: true_arr
+        non_additive_dimension:
+          name: mon_lastday
+          window_agg: max

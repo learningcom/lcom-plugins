@@ -1,0 +1,72 @@
+version: 2
+
+models:
+  - name: vws_month
+    description: >
+      Custom Calendar dimension containing calendar, fiscal year, and school year
+      attributes. One row per month.
+
+    config:
+      tags:
+        - semantic
+
+    semantic_model:
+      enabled: true
+      name: custom_month
+
+    time_spine:
+      standard_granularity_column: mon_firstday
+
+      custom_granularities:
+
+        - name: fiscalyear
+          column_name: fiscalyear
+
+        - name: fiscalmonth
+          column_name: fiscalyear_mon
+
+        - name: schoolyear
+          column_name: schoolyear
+
+        - name: schoolmonth
+          column_name: schoolyear_mon          
+
+        - name: mon_year
+          column_name: mon_year        
+
+    columns:
+
+      
+      - name: mon_year
+        description: Year and month in yyyymm format.
+        granularity: month
+        entity:
+          type: primary
+          name: calendar
+
+
+      - name: mon_firstday
+        description: First day of the month.
+        granularity: month
+        dimension:
+          type: time
+          name: mon_firstday
+          label: First day of the month
+
+      - name: mon_lastday
+        description: Last day of the month
+        granularity: month
+        dimension:
+          type: time
+          name: mon_lastday
+          label: Month End
+                  
+      - name: fiscalyear
+        description: Fiscal year for the month.
+      - name: fiscalyear_mon
+        description: Month number within the fiscal year.
+      - name: schoolyear
+        description: School year for the month.
+      - name: schoolyear_mon
+        description: Month number within the school year.
+
