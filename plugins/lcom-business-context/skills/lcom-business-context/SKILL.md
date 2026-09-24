@@ -120,6 +120,44 @@ Use the following routing as a starting point.
 A question can require more than one source. For example, a question about product usage by
 Customer may require `ontology/Ontology_Product.md`, `ontology/Ontology_Usage.md`, and `ontology/Ontology_Account.md`.
 
+## MCP Tool Integration
+
+### Account Knowledge Graph
+
+When the user asks about a specific Account / Organization, use the
+`lcom_metrics` MCP server together with `ontology/Ontology_Account.md`.
+
+1. Use `get_account` to identify the specific Account and retrieve its
+   current Account context.
+
+2. Use `ontology/Ontology_Account.md` to interpret the returned attributes
+   and relationships. The ontology defines the meaning of Account,
+   District, Customer, Salesforce Account, LCom Organization, ownership,
+   licensing, usage, commercial activity, support, training, and program
+   relationships.
+
+3. Treat `get_account` as instance data and the Account ontology as the
+   schema/business semantics for that instance.
+
+4. When the question requires actual metric values, use the corresponding
+   metric through `lcom_metrics` and attach those values to the Account
+   context.
+
+5. Build an Account knowledge graph by combining:
+   - ontology-defined entities and relationships;
+   - Account-specific relationships returned by `get_account`;
+   - actual metric values returned by MetricFlow.
+
+6. Do not create an ontology relationship merely because a metric is
+   non-zero. Follow the relationship and hierarchy rules documented in
+   `Ontology_Account.md`.
+
+7. Do not invent relationships or attributes that are not present in either
+   the ontology or MCP results.
+
+8. Treat `Unknown` and `1900-01-01` returned by `get_account` as missing
+   values, not actual business values.
+
 ## Reasoning Rules
 
 ### Ground answers in documented Learning.com knowledge
@@ -230,10 +268,38 @@ question:
 3. do not fill the gap from general knowledge unless the user explicitly asks for an
    external/general interpretation.
 
-## Future Tool Integration
+## MCP Tool Integration
 
-This skill currently describes use of static business knowledge only.
+### Metric Value Queries
 
-Instructions for MCP tools, semantic metric queries, database-backed lookups, current entity
-data, profiles, metric behavior, and other dynamic information will be added separately when
-those tools are available.
+For questions asking for actual Learning.com metric values, use the
+`lcom_metrics` MCP server.
+
+Use the business knowledge files to determine which business metric the
+question refers to, then use the corresponding MetricFlow metric through
+`lcom_metrics` MCP server.
+
+Metric mapping:
+
+- Active Users → `active_users`
+- Monthly Active Users → `active_users_month`
+- ARR → `arr`
+- True ARR → `true_arr`
+- Preliminary ARR → `preliminary_arr`
+- Backdated ARR → `backdated_arr`
+- Launches → `launches`
+- Monthly Launches → `launches_month`
+- Completions → `completions`
+- Monthly Completions → `completions_month`
+- Users with Completions → `users_with_completions`
+- Monthly Users with Completions → `users_with_completions_month`
+- License Provisioning → `licenses`
+
+Do not calculate or infer actual metric values from the static business
+knowledge files.
+
+Use the `lcom_metrics` MCP server to obtain current supported metrics, dimensions,
+controlled dimension values, and query results.
+
+If a requested business concept does not have a documented metric mapping,
+do not guess the metric name.
